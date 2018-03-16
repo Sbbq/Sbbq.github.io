@@ -93,8 +93,8 @@
 
 		var imageURLArr = ["/sdf.png","/cat3.png",
 		]
-		var snsNameArr  = ["Facebook","Zk"];
-		var myLinkAccount = ['https://www.facebook.com/kenjiSpecial',"sdd"]
+		var snsNameArr  = ["Facebook","zk"];
+		var myLinkAccount = ['https://www.facebook.com/kenjiSpecial',"zk"]
 
 		var perspectiveMatrix
 		var randomTargetXArr = [], randomTargetYArr = [];
@@ -432,6 +432,41 @@ window.addEventListener("keypress", function (event) {
 	}
 });
 
+window.addEventListener("click", function (event) {
+if(isScroll) return;
+    var rotate;
+    var tansY;
+
+    isScroll = true;
+       drawType = (drawType + 1) % imageURLArr.length;
+       rotate = 90;
+       transY = -15;
+     
+
+    coefficient = .3;
+    randomTargetXArr = [];
+    randomTargetYArr = [];
+
+    // -------------------------------
+
+    for (var ii = 0; ii < numLines; ii++) {
+        var randomPos = target[drawType][parseInt(target[drawType].length * Math.random())];
+        randomTargetXArr.push(randomPos.x);
+        randomTargetYArr.push(randomPos.y);
+    }
+
+    vertices = new Float32Array(vertices);
+    randomTargetXArr = new Float32Array(randomTargetXArr);
+    randomTargetYArr = new Float32Array(randomTargetYArr);
+
+
+    setTimeout(function(){
+        isScroll = false;
+    }, 600);
+});
+window.addEventListener("mousewheel", function(){
+	window.location.href="https://sbbq.github.io/Zk-blog/"; 
+});
 
 </script>
 </body>
